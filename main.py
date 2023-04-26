@@ -28,11 +28,15 @@ def preprocess(text):
                 expanded_tokens.append("are")
             elif "'ll" in token:
                 expanded_tokens.append("will")
+            elif token.lower() == "won't":
+                expanded_tokens.append(["will", "not"])
+            elif token.lower() == "let's":
+                expanded_tokens.append(["let", "us"])
             else:
                 expanded_tokens.append(token)
         else:
             expanded_tokens.append(token)
-#["m", "s", "d", "ve", "re", "ll"]
+    # ["m", "s", "d", "ve", "re", "ll"]
     # Tokenize multiword expressions
     mwes = ["New York", "San Francisco", "Los Angeles", "Washington D.C."]
     final_tokens = []
@@ -46,6 +50,7 @@ def preprocess(text):
             i += 1
 
     return final_tokens
+
 
 def stem(tokens):
     # Stem using the Porter stemmer
@@ -69,11 +74,10 @@ def lemmatize(tokens):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    #text = "It'll be nice if we can't go outside. Let's stay indoors and watch a movie instead."    #text = "I'm going to New York and we're staying for a week. I love San Francisco, but I've never been to Los Angeles. Have you ever visited Washington D.C.?"
-    text = "going goes playing plays played"
-    print(preprocess(text))
-    print(stem(preprocess(text)))
-    print(lemmatize(preprocess(text)))
-
+    # text = "It'll be nice if we can't go outside. Let's stay indoors and watch a movie instead."    #text = "I'm going to New York and we're staying for a week. I love San Francisco, but I've never been to Los Angeles. Have you ever visited Washington D.C.?"
+    text = "going goes playing plays played fairness "
+    print(preprocess(text), "Tokens")
+    print(stem(preprocess(text)), "Stemmer")
+    print(lemmatize(preprocess(text)), "Lemmatizer")
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
