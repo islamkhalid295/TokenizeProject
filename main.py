@@ -87,4 +87,3 @@ if __name__ == '__main__':
     print(stem(preprocess(text)), "Stemmer")
     print(lemmatize(preprocess(text)), "Lemmatizer")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
